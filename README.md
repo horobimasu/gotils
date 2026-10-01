@@ -13,3 +13,8 @@ go get github.com/horobimasu/gotils
 
 # parse
 1. `ExpandPath(path)` expands env vars wrapped in `%%` and `~` to `%USERPROFILE%`
+
+# exec
+1. `RunCommand(program, args)` runs the program with the args
+2. `StartCommand(program, args)` returns the cmd struct executing the program with the args
+3. `GetCommandOutput(program, args)` runs the program with the args and gets the trimmed output
