@@ -12,9 +12,13 @@ go get github.com/horobimasu/gotils
 3. `ReplaceFileBytesFromLeading(filePath, leadingBytes, replaceWith)` replaces all bytes starting from the first `leadingBytes` to the length of `replaceWith`
 
 # parse
-1. `ExpandPath(path)` expands env vars wrapped in `%%` and `~` to `%USERPROFILE%`
+1. `ExpandPath(path)` expands the env vars in `path` wrapped in `%%` and `~` to `%USERPROFILE%` if it is the first character
 
 # exec
-1. `RunCommand(program, args)` runs the program with the args
-2. `StartCommand(program, args)` returns the cmd struct executing the program with the args
-3. `GetCommandOutput(program, args)` runs the program with the args and gets the trimmed output
+1. `RunCommand(program, args)` runs `program` with `args`
+2. `StartCommand(program, args)` returns the cmd struct executing `program` with `args`
+3. `GetCommandOutput(program, args)` runs `program` with `args` and gets the trimmed output
+
+# crypt
+1. `EncryptAesGcm(data, key)` encrypts `data` with `key` using AES-GCM
+2. `DecryptAesGcm(data, key)` decrypts `data` with `key` using AES-GCM

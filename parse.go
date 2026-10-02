@@ -6,13 +6,17 @@ import (
 	"strings"
 )
 
-var envPathPattern *regexp.Regexp = regexp.MustCompile("%([^%]+)%")
+var envPathPattern = regexp.MustCompile("%([^%]+)%")
 
 // os.Expand() only expands $... syntax paths
 // this expands the BETTER %...% paths
 // also ~ -> %USERPROFILE% (only if its the first char ofc)
 func ExpandPath(path string) string {
-	if len(path) > 0 && []rune(path)[0] == '~' {
+	if len(path) <= 0 {
+		return ""
+	}
+
+	if []rune(path)[0] == '~' {
 		path = strings.Replace(path, "~", "%USERPROFILE%", 1)
 	}
 
