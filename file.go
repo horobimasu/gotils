@@ -45,7 +45,7 @@ func ReplaceFileBytesExact(filePath string, toReplace []byte, replaceWith []byte
 		return errors.New("failed to find the data to be replaced")
 	}
 
-	file, err := os.Open(filePath)
+	file, err := os.OpenFile(filePath, os.O_WRONLY, 0666)
 	if err != nil {
 		return err
 	}
@@ -71,7 +71,7 @@ func ReplaceFileBytesFromLeading(filePath string, leadingBytes []byte, replaceWi
 		return errors.New("length of replacement data is greater than file data")
 	}
 
-	file, err := os.Open(filePath)
+	file, err := os.OpenFile(filePath, os.O_WRONLY, 0666)
 	if err != nil {
 		return err
 	}
